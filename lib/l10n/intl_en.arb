@@ -1,5 +1,8 @@
 {
   "incorrectUsernamePassword": "Username or password is incorrect",
   "unauthorized": "Unauthorized",
-  "somethingWentWrong": "Something went wrong"
+  "somethingWentWrong": "Something went wrong",
+  "language": "Language",
+  "russian": "Russian",
+  "english": "English"
 }

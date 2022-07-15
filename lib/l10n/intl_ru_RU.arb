@@ -1,5 +1,8 @@
 {
   "incorrectUsernamePassword": "Неверное имя пользователя или пароль",
   "unauthorized": "Неавторизован",
-  "somethingWentWrong": "Что то пошло не так"
+  "somethingWentWrong": "Что то пошло не так",
+  "language": "Язык",
+  "russian": "Русский",
+  "english": "Английский"
 }
