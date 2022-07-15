@@ -1,1 +1,5 @@
-{}
+{
+  "incorrectUsernamePassword": "Username or password is incorrect",
+  "unauthorized": "Unauthorized",
+  "somethingWentWrong": "Something went wrong"
+}

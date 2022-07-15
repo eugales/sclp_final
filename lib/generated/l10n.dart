@@ -49,6 +49,36 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Username or password is incorrect`
+  String get incorrectUsernamePassword {
+    return Intl.message(
+      'Username or password is incorrect',
+      name: 'incorrectUsernamePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unauthorized`
+  String get unauthorized {
+    return Intl.message(
+      'Unauthorized',
+      name: 'unauthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong`
+  String get somethingWentWrong {
+    return Intl.message(
+      'Something went wrong',
+      name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
