@@ -4,5 +4,6 @@
   "somethingWentWrong": "Что то пошло не так",
   "language": "Язык",
   "russian": "Русский",
-  "english": "Английский"
+  "english": "Английский",
+  "appTheme": "Тема"
 }
