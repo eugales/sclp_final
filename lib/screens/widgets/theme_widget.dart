@@ -42,7 +42,8 @@ class ThemeWidget extends StatefulWidget {
 
 class ThemeWidgetState extends State<ThemeWidget> {
   ThemeData? _theme;
-  String? activeThemeName;
+  String? _colorName;
+  Color? _color;
 
   @override
   void initState() {
@@ -50,10 +51,13 @@ class ThemeWidgetState extends State<ThemeWidget> {
   }
 
   ThemeData? get theme => _theme;
+  String? get colorName => _colorName;
+  Color? get color => _color;
 
-  void changeTheme(String colorName) {
+  void changeThemeColor(String? name) {
     setState(() {
-      activeThemeName = colorName;
+      _colorName = name ?? AppThemes.defaultColorName;
+      _color = AppThemes.getColorWith(name: colorName);
       _theme = AppThemes.getThemeWith(name: colorName);
     });
   }

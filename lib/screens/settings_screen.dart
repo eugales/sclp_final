@@ -5,7 +5,6 @@ import 'package:sclp_final/constants/app_themes.dart';
 
 import 'package:sclp_final/generated/l10n.dart';
 import 'package:sclp_final/repo/repo_settings.dart';
-import 'package:sclp_final/repo/repo_theme.dart';
 import 'package:sclp_final/screens/widgets/theme_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -52,8 +51,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   void _themeColorChanged(String? value) {
     if (value == null) return;
-    ThemeWidget.instanceOf(context)?.changeTheme(value);
-    Provider.of<RepoTheme>(context, listen: false).saveThemeName(value);
+    ThemeWidget.instanceOf(context)?.changeThemeColor(value);
+    Provider.of<RepoSettings>(context, listen: false).saveThemeColorName(value);
   }
 
   @override
@@ -80,10 +79,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: [
               Text("${S.of(context).appTheme}: "),
               DropdownButton<String>(
-                alignment: Alignment.center,
-                value: ThemeWidget.instanceOf(context)?.activeThemeName,
+                value: ThemeWidget.instanceOf(context)?.colorName,
                 items: _themeColorsDropdown,
                 onChanged: _themeColorChanged,
+                alignment: Alignment.center,
               )
             ],
           )

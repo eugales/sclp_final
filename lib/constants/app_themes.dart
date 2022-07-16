@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppThemes {
-  static final Map<String, int> primariesMap = <String, int>{
+  static const String defaultColorName = 'blue';
+
+  static const Map<String, int> primariesMap = <String, int>{
     'red': 4294198070,
     'pink': 4293467747,
     'purple': 4288423856,
@@ -22,8 +24,13 @@ class AppThemes {
     'blueGrey': 4284513675,
   };
 
-  static ThemeData getThemeWith({required String name}) {
-    int colorInt = primariesMap[name] ?? 4280391411;
+  static Color getColorWith({required String? name}) {
+    int colorInt = primariesMap[name] ?? primariesMap[defaultColorName]!;
+    return Color(colorInt);
+  }
+
+  static ThemeData getThemeWith({required String? name}) {
+    int colorInt = primariesMap[name] ?? primariesMap[defaultColorName]!;
     Color color = Color(colorInt);
     final colorScheme = ColorScheme.fromSeed(seedColor: color);
 
