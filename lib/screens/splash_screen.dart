@@ -16,8 +16,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    final provider = Provider.of<RepoSettings>(context, listen: false).init();
-
+    final provider = context.read<RepoSettings>().init();
     provider.then((repoSettings) async {
       // Locale initial loading from local repo
       var defaultLocale = const Locale('ru', 'RU');
@@ -28,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
       S.load(defaultLocale).then((value) async {
         await Future.delayed(const Duration(seconds: 1));
       }).whenComplete(() {
-        Navigator.of(context).pushReplacementNamed('/settings');
+        Navigator.of(context).pushReplacementNamed('/login');
       });
 
       // Theme initial loading from local repo
@@ -43,6 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(32),
       color: ThemeWidget.instanceOf(context)?.color,
       alignment: Alignment.center,
       child: Image.asset(AppAssets.images.logo),

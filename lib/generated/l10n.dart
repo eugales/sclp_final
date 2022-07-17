@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Authorized`
+  String get authorized {
+    return Intl.message(
+      'Authorized',
+      name: 'authorized',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Unauthorized`
   String get unauthorized {
     return Intl.message(
@@ -115,6 +125,56 @@ class S {
     return Intl.message(
       'App theme',
       name: 'appTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get signIn {
+    return Intl.message(
+      'Sign in',
+      name: 'signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get username {
+    return Intl.message(
+      'Username',
+      name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username must contain more than 3 symbols`
+  String get inputErrorUsernameShort {
+    return Intl.message(
+      'Username must contain more than 3 symbols',
+      name: 'inputErrorUsernameShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain more then 8 symbols`
+  String get inputErrorPasswordShort {
+    return Intl.message(
+      'Password must contain more then 8 symbols',
+      name: 'inputErrorPasswordShort',
       desc: '',
       args: [],
     );

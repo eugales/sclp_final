@@ -1,6 +1,6 @@
+import 'dart:convert';
 import 'dart:developer';
 
-import 'package:dio/dio.dart';
 import 'package:sclp_final/generated/l10n.dart';
 import 'package:sclp_final/repo/api.dart';
 
@@ -13,23 +13,17 @@ class RepoAuthImpl extends RepoAuth {
   Future<ResultRepoAuth> authorize(String username, String password) async {
     if (username != 'qwerty' && password != '123456ab') {
       log(S.current.incorrectUsernamePassword);
-      throw ResultRepoAuth(errorMessage: S.current.incorrectUsernamePassword);
+      return ResultRepoAuth(errorMessage: S.current.incorrectUsernamePassword);
     }
     try {
-      final response = await Api().dio.post(
-        '/auth/login',
-        data: {username: 'mor_2314', password: '83r5^_'},
-      );
+      final json = jsonEncode({'username': 'mor_2314', 'password': '83r5^_'});
+      final response = await Api().dio.post('/auth/login', data: json);
       final token = response.data['token'];
+      log(S.current.authorized);
       return ResultRepoAuth(token: token);
-    } on DioError catch (e) {
-      if (e.response?.statusCode == 401) {
-        throw ResultRepoAuth(errorMessage: S.current.unauthorized);
-      }
-      return ResultRepoAuth(errorMessage: S.current.somethingWentWrong);
     } catch (e) {
       log(S.current.somethingWentWrong, error: e);
-      throw ResultRepoAuth(errorMessage: S.current.somethingWentWrong);
+      return ResultRepoAuth(errorMessage: S.current.somethingWentWrong);
     }
   }
 }

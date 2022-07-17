@@ -23,13 +23,21 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTheme": MessageLookupByLibrary.simpleMessage("Тема"),
+        "authorized": MessageLookupByLibrary.simpleMessage("Авторизован"),
         "english": MessageLookupByLibrary.simpleMessage("Английский"),
         "incorrectUsernamePassword": MessageLookupByLibrary.simpleMessage(
             "Неверное имя пользователя или пароль"),
+        "inputErrorPasswordShort": MessageLookupByLibrary.simpleMessage(
+            "Пароль должен содержать не менее 8 символов"),
+        "inputErrorUsernameShort": MessageLookupByLibrary.simpleMessage(
+            "Имя пользователя должно содержать не менее 3 символов"),
         "language": MessageLookupByLibrary.simpleMessage("Язык"),
+        "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Войти"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Что то пошло не так"),
-        "unauthorized": MessageLookupByLibrary.simpleMessage("Неавторизован")
+        "unauthorized": MessageLookupByLibrary.simpleMessage("Неавторизован"),
+        "username": MessageLookupByLibrary.simpleMessage("Имя пользователя")
       };
 }

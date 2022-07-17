@@ -9,7 +9,7 @@ class Api {
   final options = BaseOptions(
       baseUrl: 'https://fakestoreapi.com',
       connectTimeout: 5000,
-      receiveTimeout: 3000);
+      receiveTimeout: 5000);
 }
 
 class _BasicInterceptor implements Interceptor {
@@ -18,7 +18,7 @@ class _BasicInterceptor implements Interceptor {
     if (err.response?.statusCode == 401) {
       log(S.current.unauthorized, error: err.response?.statusMessage);
     }
-    handler.next(err);
+    // handler.next(err);
   }
 
   @override

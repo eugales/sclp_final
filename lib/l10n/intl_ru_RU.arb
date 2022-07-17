@@ -1,9 +1,15 @@
 {
   "incorrectUsernamePassword": "Неверное имя пользователя или пароль",
+  "authorized": "Авторизован",
   "unauthorized": "Неавторизован",
   "somethingWentWrong": "Что то пошло не так",
   "language": "Язык",
   "russian": "Русский",
   "english": "Английский",
-  "appTheme": "Тема"
+  "appTheme": "Тема",
+  "signIn": "Войти",
+  "username": "Имя пользователя",
+  "password": "Пароль",
+  "inputErrorUsernameShort": "Имя пользователя должно содержать не менее 3 символов",
+  "inputErrorPasswordShort": "Пароль должен содержать не менее 8 символов"
 }

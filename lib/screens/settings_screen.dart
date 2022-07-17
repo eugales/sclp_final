@@ -8,6 +8,7 @@ import 'package:sclp_final/repo/repo_settings.dart';
 import 'package:sclp_final/screens/widgets/theme_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
+  static const routeName = '/settings';
   const SettingsScreen({Key? key}) : super(key: key);
 
   @override
@@ -44,15 +45,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     setState(() {
       _locale = value;
     });
-
-    final repoSettings = Provider.of<RepoSettings>(context, listen: false);
-    repoSettings.saveLocale(value!);
+    context.read<RepoSettings>().saveLocale(value!);
   }
 
   void _themeColorChanged(String? value) {
     if (value == null) return;
     ThemeWidget.instanceOf(context)?.changeThemeColor(value);
-    Provider.of<RepoSettings>(context, listen: false).saveThemeColorName(value);
+    context.read<RepoSettings>().saveThemeColorName(value);
   }
 
   @override

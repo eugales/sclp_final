@@ -1,9 +1,15 @@
 {
   "incorrectUsernamePassword": "Username or password is incorrect",
+  "authorized": "Authorized",
   "unauthorized": "Unauthorized",
   "somethingWentWrong": "Something went wrong",
   "language": "Language",
   "russian": "Russian",
   "english": "English",
-  "appTheme": "App theme"
+  "appTheme": "App theme",
+  "signIn": "Sign in",
+  "username": "Username",
+  "password": "Password",
+  "inputErrorUsernameShort": "Username must contain more than 3 symbols",
+  "inputErrorPasswordShort": "Password must contain more then 8 symbols"
 }
