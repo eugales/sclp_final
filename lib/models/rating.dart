@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class Rating {
   double? rate;
-  int? count;
+  num? count;
 
   Rating({
     this.rate,
@@ -11,7 +11,7 @@ class Rating {
 
   Rating copyWith({
     double? rate,
-    int? count,
+    num? count,
   }) {
     return Rating(
       rate: rate ?? this.rate,
