@@ -11,5 +11,9 @@
   "username": "Username",
   "password": "Password",
   "inputErrorUsernameShort": "Username must contain more than 3 symbols",
-  "inputErrorPasswordShort": "Password must contain more then 8 symbols"
+  "inputErrorPasswordShort": "Password must contain more then 8 symbols",
+  "products": "Products",
+  "settings": "Settings",
+  "price": "Price",
+  "rating": "Rating"
 }

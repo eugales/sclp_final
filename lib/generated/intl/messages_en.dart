@@ -33,7 +33,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Username must contain more than 3 symbols"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "products": MessageLookupByLibrary.simpleMessage("Products"),
+        "rating": MessageLookupByLibrary.simpleMessage("Rating"),
         "russian": MessageLookupByLibrary.simpleMessage("Russian"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Something went wrong"),

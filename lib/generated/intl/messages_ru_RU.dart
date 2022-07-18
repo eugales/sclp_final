@@ -33,7 +33,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Имя пользователя должно содержать не менее 3 символов"),
         "language": MessageLookupByLibrary.simpleMessage("Язык"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
+        "price": MessageLookupByLibrary.simpleMessage("Цена"),
+        "products": MessageLookupByLibrary.simpleMessage("Товары"),
+        "rating": MessageLookupByLibrary.simpleMessage("Рейтинг"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
+        "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "signIn": MessageLookupByLibrary.simpleMessage("Войти"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Что то пошло не так"),

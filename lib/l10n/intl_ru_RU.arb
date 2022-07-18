@@ -11,5 +11,9 @@
   "username": "Имя пользователя",
   "password": "Пароль",
   "inputErrorUsernameShort": "Имя пользователя должно содержать не менее 3 символов",
-  "inputErrorPasswordShort": "Пароль должен содержать не менее 8 символов"
+  "inputErrorPasswordShort": "Пароль должен содержать не менее 8 символов",
+  "products": "Товары",
+  "settings": "Настройки",
+  "price": "Цена",
+  "rating": "Рейтинг"
 }

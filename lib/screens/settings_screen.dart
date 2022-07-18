@@ -5,6 +5,7 @@ import 'package:sclp_final/constants/app_themes.dart';
 
 import 'package:sclp_final/generated/l10n.dart';
 import 'package:sclp_final/repo/repo_settings.dart';
+import 'package:sclp_final/screens/widgets/app_bottom_tab_navigation.dart';
 import 'package:sclp_final/screens/widgets/theme_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -58,6 +59,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      bottomNavigationBar: AppBottomTabNavigation(currentIndex: 1),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

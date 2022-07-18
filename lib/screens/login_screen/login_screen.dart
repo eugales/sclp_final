@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:sclp_final/bloc/products_bloc/products_bloc.dart';
 import 'package:sclp_final/constants/app_assets.dart';
 import 'package:sclp_final/generated/l10n.dart';
 import 'package:sclp_final/repo/repo_auth.dart';
+import 'package:sclp_final/repo/repo_products.dart';
 import 'package:sclp_final/screens/login_screen/widgets/circular_loading_widget.dart';
+import 'package:sclp_final/screens/products_screen/products_screen.dart';
 import 'package:sclp_final/screens/widgets/theme_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -26,21 +30,23 @@ class _LoginScreenState extends State<LoginScreen> {
   void _loginPressed() {
     if (formKey.currentState?.validate() ?? false) {
       formKey.currentState?.save();
-      if (_username != null && _password != null) {
+      if (_username == null && _password == null) return;
+      setState(() {
+        _isLoading = true;
+      });
+      final repoAuth = context.read<RepoAuthImpl>();
+      repoAuth.authorize(_username!, _password!).whenComplete(() {
         setState(() {
-          _isLoading = true;
+          _isLoading = false;
         });
-        context
-            .read<RepoAuthImpl>()
-            .authorize(_username!, _password!)
-            .whenComplete(() {
-          setState(() {
-            _isLoading = false;
-          });
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/settings', (route) => false);
-        });
-      }
+        
+        final repoProducts = Provider.of<RepoProducts>(context, listen: false);
+        BlocProvider.of<ProductsBloc>(context, listen: false)
+            .add(EventProductsLoadAll(repo: repoProducts));
+
+        Navigator.pushNamedAndRemoveUntil(
+            context, ProductsScreen.routeName, (route) => false);
+      });
     }
   }
 
