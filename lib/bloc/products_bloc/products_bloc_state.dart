@@ -1,6 +1,5 @@
 part of 'products_bloc.dart';
 
-@immutable
 abstract class ProductsBlocState {}
 
 class ProductsStateInitial extends ProductsBlocState {}

@@ -1,5 +1,4 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sclp_final/models/product.dart';
 import 'package:sclp_final/repo/repo_products.dart';
 

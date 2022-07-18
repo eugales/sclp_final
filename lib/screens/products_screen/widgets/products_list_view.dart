@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sclp_final/generated/l10n.dart';
+import 'package:sclp_final/constants/app_styles.dart';
 import 'package:sclp_final/models/product.dart';
+import 'package:sclp_final/screens/product_details_screen.dart';
+import 'package:sclp_final/screens/widgets/stars_rating_widget.dart';
 
 class ProductsListView extends StatelessWidget {
   const ProductsListView({Key? key, required this.products}) : super(key: key);
@@ -13,7 +15,13 @@ class ProductsListView extends StatelessWidget {
         itemBuilder: (context, index) {
           final product = products[index];
           return InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                ProductDetailsScreen.routeName,
+                arguments: product,
+              );
+            },
             child: Container(
               padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
               decoration: const BoxDecoration(
@@ -48,9 +56,16 @@ class ProductsListView extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("${S.of(context).price}: \$${product.price}"),
+                            
+                            StarsRatingWidget(
+                              rating: product.rating,
+                              size: 16,
+                              isTextVisible: false,
+                            ),
                             Text(
-                                '${S.of(context).rating}: ${product.rating?.rate}')
+                              "\$${product.price}",
+                              style: AppStyles.s16w500,
+                            ),
                           ],
                         ),
                       ],
