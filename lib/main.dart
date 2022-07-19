@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sclp_final/generated/l10n.dart';
-import 'package:sclp_final/screens/login_screen/login_screen.dart';
+import 'package:sclp_final/screens/login_screen.dart';
 import 'package:sclp_final/screens/product_details_screen.dart';
-import 'package:sclp_final/screens/products_screen/products_screen.dart';
+import 'package:sclp_final/screens/products_screen.dart';
 import 'package:sclp_final/screens/settings_screen.dart';
 import 'package:sclp_final/screens/splash_screen.dart';
 import 'package:sclp_final/screens/widgets/initial_widget.dart';

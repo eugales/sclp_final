@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sclp_final/generated/l10n.dart';
-import 'package:sclp_final/screens/products_screen/products_screen.dart';
+import 'package:sclp_final/screens/products_screen.dart';
 import 'package:sclp_final/screens/settings_screen.dart';
 
 class AppBottomTabNavigation extends StatelessWidget {

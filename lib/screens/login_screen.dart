@@ -6,8 +6,8 @@ import 'package:sclp_final/constants/app_assets.dart';
 import 'package:sclp_final/generated/l10n.dart';
 import 'package:sclp_final/repo/repo_auth.dart';
 import 'package:sclp_final/repo/repo_products.dart';
-import 'package:sclp_final/screens/login_screen/widgets/circular_loading_widget.dart';
-import 'package:sclp_final/screens/products_screen/products_screen.dart';
+import 'package:sclp_final/screens/widgets/circular_loading_widget.dart';
+import 'package:sclp_final/screens/products_screen.dart';
 import 'package:sclp_final/screens/widgets/theme_widget.dart';
 
 class LoginScreen extends StatefulWidget {
