@@ -13,6 +13,12 @@ class EventProductsBySort extends ProductsBlocEvent {
   final String sort;
 }
 
+class EventProductsByRating extends ProductsBlocEvent {
+  EventProductsByRating({required this.repo, required this.rate});
+  final RepoProducts repo;
+  final String rate;
+}
+
 class EventProductsLoadInCategory extends ProductsBlocEvent {
   EventProductsLoadInCategory({required this.repo, required this.category});
   final RepoProducts repo;

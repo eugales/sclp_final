@@ -11,8 +11,8 @@ class ProductCategoiesHeaderSliver extends SliverPersistentHeaderDelegate {
       required this.callback});
 
   String activeCategory;
-  final List<String> categories;
   void Function(String) callback;
+  final List<String> categories;
 
   @override
   double get maxExtent => 50;
@@ -26,7 +26,7 @@ class ProductCategoiesHeaderSliver extends SliverPersistentHeaderDelegate {
   }
 
   void onCategoryPressed(BuildContext context, String category) {
-    
+    if (activeCategory == category) return;
     final repo = Provider.of<RepoProducts>(context, listen: false);
     if (category == 'all') {
       BlocProvider.of<ProductsBloc>(context, listen: false)

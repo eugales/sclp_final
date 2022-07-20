@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:sclp_final/bloc/category_bloc/category_bloc.dart';
 import 'package:sclp_final/bloc/products_bloc/products_bloc.dart';
 import 'package:sclp_final/constants/app_styles.dart';
 import 'package:sclp_final/generated/l10n.dart';
 import 'package:sclp_final/models/product.dart';
 import 'package:sclp_final/screens/product_details_screen.dart';
-import 'package:sclp_final/screens/widgets/product_categories_header_sliver.dart';
 import 'package:sclp_final/screens/widgets/app_bottom_tab_navigation.dart';
+import 'package:sclp_final/screens/widgets/product_categories_header_sliver.dart';
+import 'package:sclp_final/screens/widgets/product_fliter_header_sliver.dart';
 import 'package:sclp_final/screens/widgets/stars_rating_widget.dart';
 
 part "widgets/product_list_item.dart";
@@ -23,10 +25,24 @@ class ProductsScreen extends StatefulWidget {
 
 class _ProductsScreenState extends State<ProductsScreen> {
   String activeCategory = 'all';
+  String activeRating = 'all';
+  String activeSort = 'asc';
 
   void setActiveCategory(String selectedCategory) {
     setState(() {
       activeCategory = selectedCategory;
+    });
+  }
+
+  void setActiveSort(String? selectedSort) {
+    setState(() {
+      activeSort = selectedSort ?? activeSort;
+    });
+  }
+
+  void setActiveRating(String? selectedRating) {
+    setState(() {
+      activeRating = selectedRating ?? activeRating;
     });
   }
 
@@ -37,8 +53,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            excludeHeaderSemantics: true,
-            floating: true,
             pinned: true,
             title: Text(S.of(context).products),
           ),
@@ -61,6 +75,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 ),
               );
             },
+          ),
+          SliverPersistentHeader(
+            floating: false,
+            pinned: true,
+            delegate: ProductFilterHeaderSliver(
+              activeSort: activeSort,
+              callbackSort: setActiveSort,
+              activeRating: activeRating,
+              callbackRating: setActiveRating,
+            ),
           ),
           BlocBuilder<ProductsBloc, ProductsBlocState>(
             builder: (context, state) {

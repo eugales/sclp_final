@@ -6,16 +6,32 @@ class StarsRatingWidget extends StatelessWidget {
     Key? key,
     required this.rating,
     this.size = 24,
-    this.isTextVisible = true,
+    this.isLeading = true,
+    this.isTrailing = true,
   }) : super(key: key);
 
+  final bool isLeading;
+  final bool isTrailing;
   final Rating? rating;
   final double size;
-  final bool isTextVisible;
-  Icon get starEmpty =>
-       Icon(Icons.star_border, color: Colors.amber, size: size);
-  Icon get starFull => Icon(Icons.star, color: Colors.amber, size: size);
-  Icon get starHalf => Icon(Icons.star_half, color: Colors.amber, size: size);
+
+  Icon get starEmpty => Icon(
+        Icons.star_border,
+        color: Colors.amber,
+        size: size,
+      );
+
+  Icon get starFull => Icon(
+        Icons.star,
+        color: Colors.amber,
+        size: size,
+      );
+
+  Icon get starHalf => Icon(
+        Icons.star_half,
+        color: Colors.amber,
+        size: size,
+      );
 
   List<Icon> getRating() {
     List<Icon> stars = [];
@@ -37,20 +53,20 @@ class StarsRatingWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Container(
-          alignment: Alignment.center,
-          height: 20,
-          width: 30,
-          decoration: BoxDecoration(
-            color: Colors.amber,
-            borderRadius: BorderRadius.circular(5)
-            
+        if (isLeading)
+          Container(
+            alignment: Alignment.center,
+            height: 20,
+            width: 30,
+            decoration: BoxDecoration(
+                color: Colors.amber, borderRadius: BorderRadius.circular(5)),
+            child: Text("${rating?.rate}"),
           ),
-          child: Text("${rating?.rate}"),
+        const SizedBox(
+          width: 5,
         ),
-        const SizedBox(width: 5,),
         ...getRating(),
-        if(isTextVisible) Text("(${rating?.count})"),
+        if (isTrailing) Text("(${rating?.count})"),
       ],
     );
   }

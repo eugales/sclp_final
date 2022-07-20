@@ -1,8 +1,7 @@
 part of '../products_screen.dart';
 
 class ProductListItem extends StatelessWidget {
-  const ProductListItem({Key? key, required this.product})
-      : super(key: key);
+  const ProductListItem({Key? key, required this.product}) : super(key: key);
 
   final Product product;
 
@@ -53,7 +52,7 @@ class ProductListItem extends StatelessWidget {
                       StarsRatingWidget(
                         rating: product.rating,
                         size: 16,
-                        isTextVisible: false,
+                        isTrailing: false,
                       ),
                       Text(
                         "\$${product.price}",

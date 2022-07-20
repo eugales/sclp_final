@@ -36,5 +36,19 @@ class ProductsBloc extends Bloc<ProductsBlocEvent, ProductsBlocState> {
       }
       emit(ProductsStateData(products: result.products!));
     });
+
+    on<EventProductsByRating>((event, emit) async {
+      emit(ProductsStateLoading());
+      final result = await event.repo.getProducts();
+      if (result.errorMessage != null) {
+        emit(ProductsStateError(result.errorMessage!));
+        return;
+      }
+
+      final productsByRating = result.products?.where((e) {
+        return e.rating?.rate?.floor() == double.parse(event.rate);
+      }).toList();
+      emit(ProductsStateData(products: productsByRating ?? []));
+    });
   }
 }
