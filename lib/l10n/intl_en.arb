@@ -15,5 +15,6 @@
   "products": "Products",
   "settings": "Settings",
   "price": "Price",
-  "rating": "Rating"
+  "rating": "Rating",
+  "noData": "No Data"
 }

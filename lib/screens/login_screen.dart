@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:sclp_final/bloc/category_bloc/category_bloc.dart';
 import 'package:sclp_final/bloc/products_bloc/products_bloc.dart';
 import 'package:sclp_final/constants/app_assets.dart';
 import 'package:sclp_final/generated/l10n.dart';
@@ -39,10 +40,13 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {
           _isLoading = false;
         });
-        
+
         final repoProducts = Provider.of<RepoProducts>(context, listen: false);
         BlocProvider.of<ProductsBloc>(context, listen: false)
             .add(EventProductsLoadAll(repo: repoProducts));
+
+        BlocProvider.of<CategoryBloc>(context, listen: false)
+            .add(EventLoadCategories(repo: repoProducts));
 
         Navigator.pushNamedAndRemoveUntil(
             context, ProductsScreen.routeName, (route) => false);

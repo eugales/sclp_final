@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputErrorUsernameShort": MessageLookupByLibrary.simpleMessage(
             "Username must contain more than 3 symbols"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "noData": MessageLookupByLibrary.simpleMessage("No Data"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "products": MessageLookupByLibrary.simpleMessage("Products"),
