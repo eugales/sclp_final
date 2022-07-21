@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     final provider = context.read<RepoSettings>().init();
     provider.then((repoSettings) async {
-      // Locale initial loading from local repo
+      // Initial loading of Locale from local repo
       var defaultLocale = const Locale('ru', 'RU');
       final locale = await repoSettings.readLocale();
       if (locale == 'en') {
@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.of(context).pushReplacementNamed('/login');
       });
 
-      // Theme initial loading from local repo
+      // Initial loading of Theme from local repo
       repoSettings.readThemeColorName().then((colorName) {
         ThemeWidgetState? themeWidgetState = ThemeWidget.instanceOf(context);
         themeWidgetState?.changeThemeColor(colorName);

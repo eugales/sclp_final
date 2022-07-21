@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputErrorUsernameShort": MessageLookupByLibrary.simpleMessage(
             "Username must contain more than 3 symbols"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "login": MessageLookupByLibrary.simpleMessage("Sign in"),
         "noData": MessageLookupByLibrary.simpleMessage("No Data"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
@@ -39,7 +40,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "rating": MessageLookupByLibrary.simpleMessage("Rating"),
         "russian": MessageLookupByLibrary.simpleMessage("Russian"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-        "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "unauthorized": MessageLookupByLibrary.simpleMessage("Unauthorized"),

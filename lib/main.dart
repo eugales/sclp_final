@@ -7,6 +7,7 @@ import 'package:sclp_final/screens/products_screen.dart';
 import 'package:sclp_final/screens/settings_screen.dart';
 import 'package:sclp_final/screens/splash_screen.dart';
 import 'package:sclp_final/screens/widgets/initial_widget.dart';
+import 'package:sclp_final/screens/widgets/app_state_widget.dart';
 import 'package:sclp_final/screens/widgets/theme_widget.dart';
 
 void main() {
@@ -31,24 +32,27 @@ class _MaterialApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Sclp Final',
-      theme: ThemeWidget.of(context),
-      routes: {
-        '/': (context) => const SplashScreen(),
-        LoginScreen.routeName: (context) => const LoginScreen(),
-        ProductsScreen.routeName: (context) => const ProductsScreen(),
-        ProductDetailsScreen.routeName: (context) => const ProductDetailsScreen(),
-        SettingsScreen.routeName: (context) => const SettingsScreen(),
-      },
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
+    return AppStateWidget(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Sclp Final',
+        theme: ThemeWidget.of(context),
+        routes: {
+          '/': (context) => const SplashScreen(),
+          LoginScreen.routeName: (context) => const LoginScreen(),
+          ProductsScreen.routeName: (context) => const ProductsScreen(),
+          ProductDetailsScreen.routeName: (context) =>
+              const ProductDetailsScreen(),
+          SettingsScreen.routeName: (context) => const SettingsScreen(),
+        },
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+      ),
     );
   }
 }

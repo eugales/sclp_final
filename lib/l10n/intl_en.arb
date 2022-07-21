@@ -7,7 +7,7 @@
   "russian": "Russian",
   "english": "English",
   "appTheme": "App theme",
-  "signIn": "Sign in",
+  "login": "Sign in",
   "username": "Username",
   "password": "Password",
   "inputErrorUsernameShort": "Username must contain more than 3 symbols",

@@ -131,10 +131,10 @@ class S {
   }
 
   /// `Sign in`
-  String get signIn {
+  String get login {
     return Intl.message(
       'Sign in',
-      name: 'signIn',
+      name: 'login',
       desc: '',
       args: [],
     );

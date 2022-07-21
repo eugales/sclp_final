@@ -18,12 +18,16 @@ class AppBottomTabNavigation extends StatelessWidget {
           if (value == currentIndex) return;
           switch (value) {
             case 0:
-              Navigator.pushAndRemoveUntil(context,
-                  _buildRoute(const ProductsScreen()), (route) => false);
+              Navigator.pushReplacement(
+                context,
+                _buildRoute(const ProductsScreen()),
+              );
               break;
             case 1:
-              Navigator.pushAndRemoveUntil(context,
-                  _buildRoute(const SettingsScreen()), (route) => false);
+              Navigator.pushReplacement(
+                context,
+                _buildRoute(const SettingsScreen()),
+              );
               break;
             default:
               break;

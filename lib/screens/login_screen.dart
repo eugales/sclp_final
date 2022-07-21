@@ -48,8 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
         BlocProvider.of<CategoryBloc>(context, listen: false)
             .add(EventLoadCategories(repo: repoProducts));
 
-        Navigator.pushNamedAndRemoveUntil(
-            context, ProductsScreen.routeName, (route) => false);
+        Navigator.pushReplacementNamed(context, ProductsScreen.routeName);
       });
     }
   }
@@ -135,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         vertical: 16),
                                   ),
                                   onPressed: _loginPressed,
-                                  child: Text(S.of(context).signIn),
+                                  child: Text(S.of(context).login),
                                 ),
                               ),
                             ],

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sclp_final/screens/products_screen.dart';
 
 class ProductCategoiesHeaderSliver extends SliverPersistentHeaderDelegate {
   ProductCategoiesHeaderSliver({
     required this.categories,
-    required this.activeCategory,
-    required this.callbackCategory,
   });
 
-  String activeCategory;
-  void Function(String) callbackCategory;
   final List<String> categories;
 
   @override
@@ -22,17 +19,13 @@ class ProductCategoiesHeaderSliver extends SliverPersistentHeaderDelegate {
     return true;
   }
 
-  void onCategoryPressed(String category) {
-    if (activeCategory == category) return;
-    callbackCategory(category);
-  }
-
   @override
   Widget build(
     BuildContext context,
     double shrinkOffset,
     bool overlapsContent,
   ) {
+    final filterState = ProductsScreen.stateWidget(context);
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
       decoration: BoxDecoration(
@@ -47,16 +40,23 @@ class ProductCategoiesHeaderSliver extends SliverPersistentHeaderDelegate {
               children: List.generate(categories.length * 2 - 1, (index) {
                 if (index.isEven) {
                   final category = categories[index ~/ 2];
+                  final state = ProductsScreen.of(context);
 
-                  if (category == activeCategory) {
+                  if (category == filterState?.activeCategory) {
                     return ElevatedButton(
-                      onPressed: () => onCategoryPressed(category),
+                      onPressed: () {
+                        if (filterState?.activeCategory == category) return;
+                        state?.setActiveCategory(category);
+                      },
                       child: Text(category),
                     );
                   }
 
                   return OutlinedButton(
-                    onPressed: () => onCategoryPressed(category),
+                    onPressed: () {
+                      if (filterState?.activeCategory == category) return;
+                      state?.setActiveCategory(category);
+                    },
                     style: OutlinedButton.styleFrom(
                       elevation: 0,
                       shape: RoundedRectangleBorder(

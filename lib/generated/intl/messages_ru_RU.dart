@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputErrorUsernameShort": MessageLookupByLibrary.simpleMessage(
             "Имя пользователя должно содержать не менее 3 символов"),
         "language": MessageLookupByLibrary.simpleMessage("Язык"),
+        "login": MessageLookupByLibrary.simpleMessage("Войти"),
         "noData": MessageLookupByLibrary.simpleMessage("Нет данных"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "price": MessageLookupByLibrary.simpleMessage("Цена"),
@@ -39,7 +40,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "rating": MessageLookupByLibrary.simpleMessage("Рейтинг"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
         "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
-        "signIn": MessageLookupByLibrary.simpleMessage("Войти"),
         "somethingWentWrong":
             MessageLookupByLibrary.simpleMessage("Что то пошло не так"),
         "unauthorized": MessageLookupByLibrary.simpleMessage("Неавторизован"),
