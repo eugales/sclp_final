@@ -59,6 +59,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
+      // ignore: prefer_const_constructors
       bottomNavigationBar: AppBottomTabNavigation(currentIndex: 1),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -7,48 +7,24 @@ part 'products_bloc_state.dart';
 
 class ProductsBloc extends Bloc<ProductsBlocEvent, ProductsBlocState> {
   ProductsBloc() : super(ProductsStateInitial()) {
-    on<EventProductsLoadAll>((event, emit) async {
+    on<EventProductsLoad>((event, emit) async {
       emit(ProductsStateLoading());
-      final result = await event.repo.getProducts();
-      if (result.errorMessage != null) {
-        emit(ProductsStateError(result.errorMessage!));
-        return;
-      }
-      emit(ProductsStateData(products: result.products!));
-    });
-
-    on<EventProductsBySort>((event, emit) async {
-      emit(ProductsStateLoading());
-      final result = await event.repo.getProductsBySort(event.sort);
-      if (result.errorMessage != null) {
-        emit(ProductsStateError(result.errorMessage!));
-        return;
-      }
-      emit(ProductsStateData(products: result.products!));
-    });
-
-    on<EventProductsLoadInCategory>((event, emit) async {
-      emit(ProductsStateLoading());
-      final result = await event.repo.getProductsInCategory(event.category);
-      if (result.errorMessage != null) {
-        emit(ProductsStateError(result.errorMessage!));
-        return;
-      }
-      emit(ProductsStateData(products: result.products!));
-    });
-
-    on<EventProductsByRating>((event, emit) async {
-      emit(ProductsStateLoading());
-      final result = await event.repo.getProducts();
+      final result = await event.repo.getProductsBy(event.category, event.sort);
+      
       if (result.errorMessage != null) {
         emit(ProductsStateError(result.errorMessage!));
         return;
       }
 
-      final productsByRating = result.products?.where((e) {
-        return e.rating?.rate?.floor() == double.parse(event.rate);
-      }).toList();
-      emit(ProductsStateData(products: productsByRating ?? []));
+      if (event.rate != null) {
+        final products = result.products?.where((e) {
+          return e.rating?.rate?.floor() == event.rate;
+        }).toList();
+        emit(ProductsStateData(products: products ?? []));
+        return;
+      }
+      
+      emit(ProductsStateData(products: result.products ?? []));
     });
   }
 }

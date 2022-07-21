@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
-import 'package:sclp_final/bloc/products_bloc/products_bloc.dart';
-import 'package:sclp_final/repo/repo_products.dart';
 
 class ProductCategoiesHeaderSliver extends SliverPersistentHeaderDelegate {
-  ProductCategoiesHeaderSliver(
-      {required this.categories,
-      required this.activeCategory,
-      required this.callback});
+  ProductCategoiesHeaderSliver({
+    required this.categories,
+    required this.activeCategory,
+    required this.callbackCategory,
+  });
 
   String activeCategory;
-  void Function(String) callback;
+  void Function(String) callbackCategory;
   final List<String> categories;
 
   @override
@@ -25,18 +22,9 @@ class ProductCategoiesHeaderSliver extends SliverPersistentHeaderDelegate {
     return true;
   }
 
-  void onCategoryPressed(BuildContext context, String category) {
+  void onCategoryPressed(String category) {
     if (activeCategory == category) return;
-    final repo = Provider.of<RepoProducts>(context, listen: false);
-    if (category == 'all') {
-      BlocProvider.of<ProductsBloc>(context, listen: false)
-          .add(EventProductsLoadAll(repo: repo));
-    } else {
-      BlocProvider.of<ProductsBloc>(context, listen: false).add(
-        EventProductsLoadInCategory(repo: repo, category: category),
-      );
-    }
-    callback(category);
+    callbackCategory(category);
   }
 
   @override
@@ -62,13 +50,13 @@ class ProductCategoiesHeaderSliver extends SliverPersistentHeaderDelegate {
 
                   if (category == activeCategory) {
                     return ElevatedButton(
-                      onPressed: () => onCategoryPressed(context, category),
+                      onPressed: () => onCategoryPressed(category),
                       child: Text(category),
                     );
                   }
 
                   return OutlinedButton(
-                    onPressed: () => onCategoryPressed(context, category),
+                    onPressed: () => onCategoryPressed(category),
                     style: OutlinedButton.styleFrom(
                       elevation: 0,
                       shape: RoundedRectangleBorder(

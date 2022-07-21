@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import 'package:sclp_final/bloc/category_bloc/category_bloc.dart';
 import 'package:sclp_final/bloc/products_bloc/products_bloc.dart';
 import 'package:sclp_final/constants/app_styles.dart';
 import 'package:sclp_final/generated/l10n.dart';
 import 'package:sclp_final/models/product.dart';
+import 'package:sclp_final/repo/repo_products.dart';
 import 'package:sclp_final/screens/product_details_screen.dart';
 import 'package:sclp_final/screens/widgets/app_bottom_tab_navigation.dart';
 import 'package:sclp_final/screens/widgets/product_categories_header_sliver.dart';
@@ -25,25 +27,35 @@ class ProductsScreen extends StatefulWidget {
 
 class _ProductsScreenState extends State<ProductsScreen> {
   String activeCategory = 'all';
-  String activeRating = 'all';
+  double? activeRate;
   String activeSort = 'asc';
 
   void setActiveCategory(String selectedCategory) {
-    setState(() {
-      activeCategory = selectedCategory;
-    });
+    activeCategory = selectedCategory;
+    onFilter();
   }
 
-  void setActiveSort(String? selectedSort) {
-    setState(() {
-      activeSort = selectedSort ?? activeSort;
-    });
+  void setActiveSort(String selectedSort) {
+    activeSort = selectedSort;
+    onFilter();
   }
 
-  void setActiveRating(String? selectedRating) {
-    setState(() {
-      activeRating = selectedRating ?? activeRating;
-    });
+  void setActiveRate(double? selectedRate) {
+    activeRate = selectedRate;
+    onFilter();
+  }
+
+  void onFilter() {
+    setState(() {});
+    final repo = Provider.of<RepoProducts>(context, listen: false);
+    BlocProvider.of<ProductsBloc>(context, listen: false).add(
+      EventProductsLoad(
+        repo: repo,
+        category: activeCategory,
+        sort: activeSort,
+        rate: activeRate,
+      ),
+    );
   }
 
   @override
@@ -56,6 +68,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             pinned: true,
             title: Text(S.of(context).products),
           ),
+          //category header
           BlocBuilder<CategoryBloc, CategoryBlocState>(
             builder: (context, state) {
               if (state is CategoryStateData) {
@@ -63,9 +76,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   floating: false,
                   pinned: true,
                   delegate: ProductCategoiesHeaderSliver(
-                      categories: ['all', ...state.categories],
-                      activeCategory: activeCategory,
-                      callback: setActiveCategory),
+                    categories: ['all', ...state.categories],
+                    activeCategory: activeCategory,
+                    callbackCategory: setActiveCategory,
+                  ),
                 );
               }
 
@@ -76,16 +90,17 @@ class _ProductsScreenState extends State<ProductsScreen> {
               );
             },
           ),
+          // filter
           SliverPersistentHeader(
             floating: false,
             pinned: true,
             delegate: ProductFilterHeaderSliver(
-              activeSort: activeSort,
-              callbackSort: setActiveSort,
-              activeRating: activeRating,
-              callbackRating: setActiveRating,
-            ),
+                activeSort: activeSort,
+                callbackSort: setActiveSort,
+                activeRate: activeRate,
+                callbackRate: setActiveRate),
           ),
+          // list
           BlocBuilder<ProductsBloc, ProductsBlocState>(
             builder: (context, state) {
               if (state is ProductsStateLoading) {

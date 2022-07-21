@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
         final repoProducts = Provider.of<RepoProducts>(context, listen: false);
         BlocProvider.of<ProductsBloc>(context, listen: false)
-            .add(EventProductsLoadAll(repo: repoProducts));
+            .add(EventProductsLoad(repo: repoProducts));
 
         BlocProvider.of<CategoryBloc>(context, listen: false)
             .add(EventLoadCategories(repo: repoProducts));

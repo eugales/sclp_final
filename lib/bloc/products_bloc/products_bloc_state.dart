@@ -11,11 +11,6 @@ class ProductsStateData extends ProductsBlocState {
   final List<Product> products;
 }
 
-class ProductsStateCategoriesData extends ProductsBlocState {
-  ProductsStateCategoriesData({required this.categories});
-  final List<String> categories;
-}
-
 class ProductsStateError extends ProductsBlocState {
   ProductsStateError(this.error);
   final String error;

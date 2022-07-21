@@ -4,7 +4,7 @@ import 'package:sclp_final/screens/products_screen.dart';
 import 'package:sclp_final/screens/settings_screen.dart';
 
 class AppBottomTabNavigation extends StatelessWidget {
-  AppBottomTabNavigation({Key? key, required this.currentIndex})
+  const AppBottomTabNavigation({Key? key, required this.currentIndex})
       : super(key: key);
 
   final int currentIndex;
@@ -12,9 +12,10 @@ class AppBottomTabNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      iconSize: 30,
-      currentIndex: currentIndex,
+        iconSize: 30,
+        currentIndex: currentIndex,
         onTap: (value) {
+          if (value == currentIndex) return;
           switch (value) {
             case 0:
               Navigator.pushAndRemoveUntil(context,

@@ -37,11 +37,11 @@ class StarsRatingWidget extends StatelessWidget {
     List<Icon> stars = [];
     final rate = rating?.rate ?? 0;
     final integer = rate.floor();
-    final fraction = rate % 1;
+    final fraction = rate.remainder(1);
     for (var i = 0; i < integer; i++) {
       stars.add(starFull);
     }
-    if (fraction > 3) stars.add(starHalf);
+    if (fraction > 0.3) stars.add(starHalf);
     while (stars.length < 5) {
       stars.add(starEmpty);
     }
@@ -59,7 +59,9 @@ class StarsRatingWidget extends StatelessWidget {
             height: 20,
             width: 30,
             decoration: BoxDecoration(
-                color: Colors.amber, borderRadius: BorderRadius.circular(5)),
+              color: Colors.amber,
+              borderRadius: BorderRadius.circular(5),
+            ),
             child: Text("${rating?.rate}"),
           ),
         const SizedBox(
