@@ -19,9 +19,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const InitialWidget(
-      child: ThemeWidget(
-        child: _MaterialApp(),
+    return InitialWidget(
+      child: AppStateWidget(
+        child: const ThemeWidget(
+          child: _MaterialApp(),
+        ),
       ),
     );
   }
@@ -32,27 +34,25 @@ class _MaterialApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppStateWidget(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Sclp Final',
-        theme: ThemeWidget.of(context),
-        routes: {
-          '/': (context) => const SplashScreen(),
-          LoginScreen.routeName: (context) => const LoginScreen(),
-          ProductsScreen.routeName: (context) => const ProductsScreen(),
-          ProductDetailsScreen.routeName: (context) =>
-              const ProductDetailsScreen(),
-          SettingsScreen.routeName: (context) => const SettingsScreen(),
-        },
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Sclp Final',
+      theme: ThemeWidget.of(context),
+      routes: {
+        '/': (context) => const SplashScreen(),
+        LoginScreen.routeName: (context) => const LoginScreen(),
+        ProductsScreen.routeName: (context) => const ProductsScreen(),
+        ProductDetailsScreen.routeName: (context) =>
+            const ProductDetailsScreen(),
+        SettingsScreen.routeName: (context) => const SettingsScreen(),
+      },
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
     );
   }
 }
